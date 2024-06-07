@@ -21,7 +21,7 @@ const Success = () => {
         <div className="flex flex-col items-center p-[15px] bg-[#262626] rounded-md gap-5">
           <div className="bg-black w-full flex items-center gap-6 text-[0.8rem] p-3">
             <AiOutlineMail size={16} />
-            <span>hello@revasexchange.com</span>
+            {/* <span>hello@revasexchange.com</span> */}
           </div>
           <p className="text-center max-w-[412px] text-[.85rem] text-[#AEAAAE]">
             Thank you for joining our business waiting list. We appreciate your

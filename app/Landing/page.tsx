@@ -11,10 +11,11 @@ import Recyclates from "@/components/Recyclates";
 import Link from "next/link";
 import React, { useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import LandingLayout from "./layout";
 
 export default function Landing() {
   return (
-    <div>
+    <LandingLayout>
       <NavBar />
       <Hero />
       <Recyclates />
@@ -26,6 +27,6 @@ export default function Landing() {
         <Goal />
         <Footer />
       </section>
-    </div>
+    </LandingLayout>
   );
 }
