@@ -5,8 +5,8 @@ import React, { useState, useEffect } from "react";
 import { Listbox } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
 import { FiLoader } from "react-icons/fi";
+import { useRouter } from "next/navigation";
 
 interface Country {
   alpha_2: string;
@@ -75,7 +75,7 @@ const WaitList: React.FC = () => {
 
       if (response.ok) {
         toast.success("Form submitted successfully");
-        router.push(`/success?email=${formData.workemail}`);
+        router.push(`/success?${formData.workemail}`);
       } else {
         console.log(`Error submitting form: ${response.statusText}`);
         setLoading(false);
@@ -87,7 +87,7 @@ const WaitList: React.FC = () => {
   };
 
   return (
-    <section className="bg-black w-screen h-screen text-white text-[16px] flex justify-center items-center px-4 lg:px-0">
+    <section className="bg-black w-screen h-screen text-white text-[16px] flex justify-center items-center py-5 px-10 lg:px-0">
       <div className="absolute hidden md:flex max-w-[88px] top-[5%] left-[10%]">
         <img className="w-full object-cover" src="/images/small1.png" alt="" />
       </div>
@@ -111,7 +111,7 @@ const WaitList: React.FC = () => {
       <div className="absolute hidden md:flex  bottom-[0] right-[0]">
         <img
           className="w-full h-full object-cover"
-          src="/images/lefticon.png"
+          src="/images/lefticon.svg"
           alt=""
         />
       </div>
@@ -129,48 +129,69 @@ const WaitList: React.FC = () => {
           REVAS PLASTIC EXCHANGE
         </p>
 
-        <div className="max-w-full gap-[20px] flex flex-col">
+        <div className="w-full max-w-[400px] mx-auto justify-center gap-[20px] flex flex-col">
           <p className="mx-auto font-[500] text-[1.5rem] lg:text-[3.2rem] 2xl:text-[3rem] text-center leading-[20px] lg:leading-[63px] 2xl:leading-[50px]">
             Join the waitlist for Revas
           </p>
-          <form className="max-w-full flex flex-col gap-[10px]" onSubmit={WaitListSignUp} >
-          <label htmlFor="firstname">First Name</label>
-            <input
-              id="firstname"
-              className="w-full rou bg-black border-white border py-[8px] px-[16px] placeholder:text-white"
-              type="text"
-              placeholder="First Name"
-              value={formData.firstname}
-              onChange={(e) => setFormData({ ...formData, firstname: e.target.value })}
-            />
-            <label htmlFor="lastname">Last Name</label>
-            <input
-              id="lastname"
-              className="w-full  bg-black border-white border py-[8px] px-[16px] placeholder:text-white"
-              type="text"
-              placeholder="Last Name"
-              value={formData.lastname}
-              onChange={(e) => setFormData({ ...formData, lastname: e.target.value })}
-            />
-            <label htmlFor="workemail">Work Email</label>
-            <input
-              id="workemail"
-              className="max-w-full   bg-black border-white border py-[8px] px-[16px] placeholder:text-white"
-              type="text"
-              placeholder="Work Email"
-              value={formData.workemail}
-              onChange={(e) => setFormData({ ...formData, workemail: e.target.value })}
-            />
-            <div className="relative w-full">
+          <form
+            className="max-w-full flex flex-col gap-4 text-[#E6E1E5]"
+            onSubmit={WaitListSignUp}
+          >
+            <div className="relative w-full flex flex-col gap-1">
+              <label htmlFor="firstname">First name</label>
+              <input
+                id="firstname"
+                className="w-full rou bg-black border-white border py-[8px] px-[16px] placeholder:text-white"
+                type="text"
+                required
+                value={formData.firstname}
+                onChange={(e) =>
+                  setFormData({ ...formData, firstname: e.target.value })
+                }
+              />
+            </div>
+            <div className="relative w-full flex flex-col gap-1">
+              <label htmlFor="lastname">Company name</label>
+              <input
+                id="lastname"
+                className="w-full  bg-black border-white border py-[8px] px-[16px] placeholder:text-white"
+                type="text"
+                required
+                value={formData.lastname}
+                onChange={(e) =>
+                  setFormData({ ...formData, lastname: e.target.value })
+                }
+              />
+            </div>
+            <div className="relative w-full flex flex-col gap-1">
+              <label htmlFor="workemail">Work email</label>
+              <input
+                id="workemail"
+                className="max-w-full   bg-black border-white border py-[8px] px-[16px] placeholder:text-white"
+                type="text"
+                required
+                value={formData.workemail}
+                onChange={(e) =>
+                  setFormData({ ...formData, workemail: e.target.value })
+                }
+              />
+            </div>
+            <div className="relative w-full flex flex-col gap-1">
               <label htmlFor="country">Country</label>
-              <Listbox id="country" value={selectedCountry} onChange={(value) => {
-                setSelectedCountry(value);
-                setFormData({ ...formData, country_id: value.id });
-              }}>
+              <Listbox
+                id="country"
+                value={selectedCountry}
+                onChange={(value) => {
+                  setSelectedCountry(value);
+                  setFormData({ ...formData, country_id: value.id });
+                }}
+              >
                 {({ open }) => (
                   <>
                     <Listbox.Button className="relative w-full box-border  bg-black border-white border py-[8px]  text-white text-left px-3">
-                      {selectedCountry ? selectedCountry.name : "Select Country"}
+                      {selectedCountry
+                        ? selectedCountry.name
+                        : "Select Country"}
                       <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                         <ChevronDownIcon
                           className="h-5 w-5 text-white"
@@ -185,7 +206,9 @@ const WaitList: React.FC = () => {
                           value={country}
                           className={({ active }) =>
                             `cursor-pointer select-none relative py-2 px-2 ${
-                              active ? "text-white bg-gray-700" : "text-gray-900"
+                              active
+                                ? "text-white bg-gray-700"
+                                : "text-gray-900"
                             }`
                           }
                         >
@@ -197,54 +220,57 @@ const WaitList: React.FC = () => {
                 )}
               </Listbox>
             </div>
-            {selectedCountry && (
-              <div className="relative w-full">
-                <label htmlFor="state">State</label>
-                <Listbox id="state" value={selectedState} onChange={(value) => {
+            <div className="relative w-full flex flex-col gap-1">
+              <label htmlFor="state">State</label>
+              <Listbox
+                id="state"
+                value={selectedState}
+                onChange={(value) => {
                   setSelectedState(value);
                   setFormData({ ...formData, state_id: value.id });
-                }}>
-                  {({ open }) => (
-                    <>
-                      <Listbox.Button className="relative w-full box-border rou bg-black border-white border py-[8px]  text-white text-left px-3">
-                        {selectedState ? selectedState.name : "Select State"}
-                        <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                          <ChevronDownIcon
-                            className="h-5 w-5 text-white"
-                            aria-hidden="true"
-                          />
-                        </span>
-                      </Listbox.Button>
-                      <Listbox.Options className="absolute w-full mt-1 border border-white bg-white shadow-lg max-h-60 overflow-auto z-10">
-                        {states.map((state) => (
-                          <Listbox.Option
-                            key={state.id}
-                            value={state}
-                            className={({ active }) =>
-                              `cursor-pointer select-none relative py-2 px-2 ${
-                                active ? "text-white bg-gray-700" : "text-gray-900"
-                              }`
-                            }
-                          >
-                            {state.name}
-                          </Listbox.Option>
-                        ))}
-                      </Listbox.Options>
-                    </>
-                  )}
-                </Listbox>
-              </div>
-            )}
+                }}
+              >
+                {({ open }) => (
+                  <>
+                    <Listbox.Button className="relative w-full box-border rou bg-black border-white border py-[8px]  text-white text-left px-3">
+                      {selectedState ? selectedState.name : "Select State"}
+                      <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                        <ChevronDownIcon
+                          className="h-5 w-5 text-white"
+                          aria-hidden="true"
+                        />
+                      </span>
+                    </Listbox.Button>
+                    <Listbox.Options  className="absolute w-full mt-1 border border-white bg-white shadow-lg max-h-60 overflow-auto z-10">
+                      {states.map((state) => (
+                        <Listbox.Option
+                          key={state.id}
+                          value={state}
+                          className={({ active }) =>
+                            `cursor-pointer select-none relative py-2 px-2 ${
+                              active
+                                ? "text-white bg-gray-700"
+                                : "text-gray-900"
+                            }`
+                          }
+                        >
+                          {state.name}
+                        </Listbox.Option>
+                      ))}
+                    </Listbox.Options>
+                  </>
+                )}
+              </Listbox>
+            </div>
             <button
               className="flex justify-center text-black bg-white items-center gap-[10px] py-[16px] transition duration-300 ease-in-out transform  hover:shadow-lg hover:bg-black hover:text-white"
               type="submit"
-
             >
               {loading ? (
                 <FiLoader color="white" />
               ) : (
                 <p className="flex gap-2 items-center font-bold">
-                  Join the waitlist 
+                  Join the waitlist
                 </p>
               )}
             </button>

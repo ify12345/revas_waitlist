@@ -5,8 +5,8 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 export default function Hero() {
   return (
     <section className="text-white flex flex-col py-3 w-full relative pb-32 lg:pb-96">
-      <div className="mx-auto flex flex-col  gap-4 px-5 md:px-10 lg:px-20">
-        <p className="w-full  font-urbanist lg:text-[80px] text-center relative top-0 z-10">
+      <div className="mx-auto flex flex-col items-center gap-4 px-5 md:px-10 lg:px-20">
+        <p className="max-w-[85%] text-2xl font-extrabold lg:text-8xl text-center relative top-0 z-10">
           Global trading platform for recycled plastic
         </p>
         <p className="w-full mx-auto text-center text-[14px] max-w-[886px] leading-[26px] lg:text-[20px] font-normal">

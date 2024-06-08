@@ -4,7 +4,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 export default function Goal() {
   return (
     <div className="bg-[#F2F2F4] h-auto max-w-full py-[50px] md:py-[160px] px-5 lg:px-20 gap-3 md:gap-0 grid  grid-cols-1 md:grid-cols-2 border auto-cols-[645px]">
-      <div className="bg-black text-white border border-black rounded-3xl md:rounded-l-3xl md:rounded-r-none relative px-5 py-[70px] flex flex-col gap-[38px]">
+      <div className="bg-black text-white border border-black rounded-3xl md:rounded-l-3xl md:rounded-r-none relative px-5 lg:px-20 py-[70px] flex flex-col gap-[38px]">
         <div className="absolute top-0 left-0">
           <img src="/images/img7.png" alt="" />
         </div>
@@ -16,7 +16,7 @@ export default function Goal() {
           resource, creating a circular economy that benefits people and the
           planet.
         </p>
-        <button className="lg:w-[200px] rounded-[100px] bg-white flex items-center justify-center py-[20px] px-[30px] border border-white text-black gap-2 transition duration-300 ease-in-out transform  hover:shadow-lg  hover:bg-black hover:text-white">
+        <button className="lg:w-[200px] rounded-[100px] bg-white flex items-center justify-center py-3  border border-white text-black gap-2 transition duration-300 ease-in-out transform  hover:shadow-lg  hover:bg-black hover:text-white">
           Join our waitlist <AiOutlineArrowRight size={10} />
         </button>
       </div>

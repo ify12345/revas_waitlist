@@ -3,8 +3,8 @@ import { AiOutlineArrowRight } from 'react-icons/ai'
 
 export default function OurProducts() {
   return (
-    <div className="px-5 lg:px-20 w-full grid grid-cols-1 xl:grid-cols-2 auto-cols-[630.5px] items-center gap-[50px] xl:gap-[155px] p-[40px] md:p-[99px]">
-    <div className="flex flex-col gap-[38px]  xl:gap-[14px] max-h-auto max-w-full">
+    <div className="px-5 lg:px-0 mx-auto justify-center w-full flex flex-col lg:flex-row items-center gap-[50px] xl:gap-[155px] p-[40px] md:p-[99px] ">
+    <div className="flex flex-col gap-[38px]  xl:gap-[14px] w-full max-w-[492px]">
       <p className="text-[11px] leading-[10px]">OUR PRODUCTS</p>
       <p className="xl:leading-[48px] text-[20px] xl:text-[42px] font-[600]">
         Access to a wide range of Recycled Plastics
@@ -28,8 +28,8 @@ export default function OurProducts() {
       </button>
     </div>
 
-    <div className="border-black rounded border-2">
-      <img className="w-full object-cover" src="/images/22.png" alt="" />
+    <div className="border-black rounded border-2  w-full max-w-[492px]">
+      <img className="w-full h-full object-cover" src="/images/22.png" alt="" />
     </div>
   </div>
   )

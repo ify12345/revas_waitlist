@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 
-const inter = Inter({ subsets: ["latin"] });
+const myFont = localFont({ src: '../public/fonts/lota/Lota GrotesqueAlt3Regular.ttf' });
+
 
 export const metadata: Metadata = {
   title: "Revas",
@@ -17,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={myFont.className}>
         <NextTopLoader
           color="#fff"
           initialPosition={0.08}

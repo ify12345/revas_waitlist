@@ -11,22 +11,23 @@ import Recyclates from "@/components/Recyclates";
 import Link from "next/link";
 import React, { useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import LandingLayout from "./layout";
 
 export default function Landing() {
   return (
-    <LandingLayout>
+    <div>
       <NavBar />
-      <Hero />
-      <Recyclates />
-      <section className="bg-white flex flex-col text-black -mt-20 lg:-mt-96">
-        <Products />
-        <MarketPlace />
-        <OurProducts />
-        <Benefits />
-        <Goal />
-        <Footer />
-      </section>
-    </LandingLayout>
+      <main className="pt-24 lg:pt-28">
+        <Hero />
+        <Recyclates />
+        <section className="bg-white flex flex-col text-black -mt-20 lg:-mt-96">
+          <Products />
+          <MarketPlace />
+          <OurProducts />
+          <Benefits />
+          <Goal />
+          <Footer />
+        </section>
+      </main>
+    </div>
   );
 }

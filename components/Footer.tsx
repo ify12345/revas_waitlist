@@ -3,7 +3,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 
 export default function Footer() {
   return (
-    <div className="bg-black gap-[53px] w-full grid grid-cols-1  p-[22px] md:p-[45px] text-white text-[7px] md:text-[16px] leading-[20px]">
+    <div className="bg-black gap-[53px] w-full grid grid-cols-1  py-[22px] md:py-[45px] text-white text-[7px] md:text-[16px] leading-[20px] lg:px-20 px-5">
       <img
         className="object-cover max-w-[216px]"
         src="/images/revas_logo.svg"

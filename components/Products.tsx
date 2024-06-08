@@ -52,9 +52,7 @@ export default function Products() {
       </div>
 
       <div className=" border px-5 lg:px-20 border-[#F2F2F4] bg-[#F2F2F4] my-8  max-w-full grid grid-cols-1 xl:grid-cols-2 auto-cols-[630.5px] items-center gap-[50px] xl:gap-[155px]  py-10">
-        <div className="border-black rounded border-2">
-          <img className="w-full" src="/images/Rectangle 5.png" alt="" />
-        </div>
+       
         <div className="flex flex-col gap-[10px]  xl:gap-[38px] w-full">
           <p className="lg:leading-[63px] text-[20px] xl:text-[52px] font-[700]">
             {selected && "Plastic Bales"}
@@ -75,6 +73,9 @@ export default function Products() {
           >
             Register <AiOutlineArrowRight size={10} />{" "}
           </Link>
+        </div>
+        <div className="border-black rounded border-2">
+          <img className="w-full" src="/images/products.svg" alt="" />
         </div>
       </div>
     </div>

@@ -4,11 +4,11 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 export default function MarketPlace() {
   return (
     
-    <div className="px-5 lg:px-20 w-full flex flex-col lg:flex-row items-center gap-[50px] xl:gap-[155px] pt-8">
-      <div className="border-black rounded border-2 w-full">
-        <img className="w-full object-cover" src="/images/23.png" alt="" />
+    <div className="justify-center px-5 lg:px-0 mx-auto w-full flex flex-col lg:flex-row items-center gap-[50px] xl:gap-[155px] pt-8">
+      <div className="border-black rounded border-2 shadow-2xl w-full max-w-[492px]">
+        <img className="w-full object-cover h-full" src="/images/23.png" alt="" />
       </div>
-      <div className="flex flex-col gap-[38px]  xl:gap-[14px] w-full">
+      <div className="flex flex-col gap-[38px]  xl:gap-[14px] w-full max-w-[492px]">
         <p className="text-[16px] ">OUR MARKETPLACE</p>
         <p className="xl:leading-[48px] text-[20px] xl:text-[42px] font-[600]">
           Quality-Controlled Global Marketplace for Recycled Plastics

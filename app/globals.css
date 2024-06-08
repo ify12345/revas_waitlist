@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Lota Grotesque Alt 3';
+  src: url('/public/fonts/Lota Grotesque Alt 3 Regular.woff2') format('woff2'),
+       url('/public/fonts/Lota Grotesque Alt 3 Regular.woff') format('woff'),
+       url('/public/fonts/Lota Grotesque Alt 3 Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -20,6 +29,7 @@ body {
   color: rgb(var(--foreground-rgb));
   background-color: black;
   overflow-x: hidden;
+  font-family: 'Lota Grotesque Alt 3', sans-serif;
 }
 
 @layer utilities {
