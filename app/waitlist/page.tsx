@@ -1,12 +1,11 @@
 "use client";
-import { AiOutlineArrowRight } from "react-icons/ai";
-import Link from "next/link";
-import React, { useState, useEffect } from "react";
 import { Listbox } from "@headlessui/react";
+import React, { useState, useEffect } from "react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { toast } from "react-toastify";
 import { FiLoader } from "react-icons/fi";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface Country {
   alpha_2: string;
@@ -91,7 +90,7 @@ const WaitList: React.FC = () => {
         console.log(`Error submitting form: ${response.statusText}`);
         setLoading(false);
       }
-    } catch (error) {
+    } catch (error:any) {
       console.log(`Error submitting form: ${error.message}`);
       setLoading(false);
     }
@@ -190,16 +189,15 @@ const WaitList: React.FC = () => {
             <div className="relative w-full flex flex-col gap-1">
               <label htmlFor="country">Country</label>
               <Listbox
-                id="country"
                 value={selectedCountry}
-                onChange={(value) => {
+                onChange={(value: Country | null) => {
                   setSelectedCountry(value);
-                  setFormData({ ...formData, country_id: value.id });
+                  setFormData({ ...formData, country_id: value?.id || "" });
                 }}
               >
                 {({ open }) => (
                   <>
-                    <Listbox.Button className="relative w-full box-border  bg-black border-white border py-[8px]  text-white text-left px-3">
+                    <Listbox.Button className="relative w-full box-border  bg-black border-white border py-[8px] text-white text-left px-3">
                       {selectedCountry
                         ? selectedCountry.name
                         : "Select Country"}
@@ -210,23 +208,23 @@ const WaitList: React.FC = () => {
                         />
                       </span>
                     </Listbox.Button>
-                    <Listbox.Options className="absolute w-full mt-1 border border-white bg-white shadow-lg max-h-60 overflow-auto z-10">
-                      {countries.map((country) => (
-                        <Listbox.Option
-                          key={country.id}
-                          value={country}
-                          className={({ active }) =>
-                            `cursor-pointer select-none relative py-2 px-2 ${
-                              active
-                                ? "text-white bg-gray-700"
-                                : "text-gray-900"
-                            }`
-                          }
-                        >
-                          {country.name}
-                        </Listbox.Option>
-                      ))}
-                    </Listbox.Options>
+                    {open && (
+                      <Listbox.Options className="absolute w-full mt-1 border border-white bg-white shadow-lg max-h-60 overflow-auto z-10">
+                        {countries.map((country) => (
+                          <Listbox.Option
+                            key={country.id}
+                            value={country}
+                            className={({ active }) =>
+                              `cursor-pointer select-none relative py-2 px-2 ${
+                                active ? "text-white bg-gray-700" : "text-gray-900"
+                              }`
+                            }
+                          >
+                            {country.name}
+                          </Listbox.Option>
+                        ))}
+                      </Listbox.Options>
+                    )}
                   </>
                 )}
               </Listbox>
@@ -234,11 +232,10 @@ const WaitList: React.FC = () => {
             <div className="relative w-full flex flex-col gap-1">
               <label htmlFor="state">State</label>
               <Listbox
-                id="state"
                 value={selectedState}
-                onChange={(value) => {
+                onChange={(value: State | null) => {
                   setSelectedState(value);
-                  setFormData({ ...formData, state_id: value.id });
+                  setFormData({ ...formData, state_id: value?.id || "" });
                 }}
               >
                 {({ open }) => (
@@ -252,39 +249,39 @@ const WaitList: React.FC = () => {
                         />
                       </span>
                     </Listbox.Button>
-                    <Listbox.Options  className="absolute w-full mt-1 border border-white bg-white shadow-lg max-h-60 overflow-auto z-10">
-                      {states.map((state) => (
-                        <Listbox.Option
-                          key={state.id}
-                          value={state}
-                          className={({ active }) =>
-                            `cursor-pointer select-none relative py-2 px-2 ${
-                              active
-                                ? "text-white bg-gray-700"
-                                : "text-gray-900"
-                            }`
-                          }
-                        >
-                          {state.name}
-                        </Listbox.Option>
-                      ))}
-                    </Listbox.Options>
+                    {open && (
+                      <Listbox.Options className="absolute w-full mt-1 border border-white bg-white shadow-lg max-h-60 overflow-auto z-10">
+                        {states.map((state) => (
+                          <Listbox.Option
+                            key={state.id}
+                            value={state}
+                            className={({ active }) =>
+                              `cursor-pointer select-none relative py-2 px-2 ${
+                                active ? "text-white bg-gray-700" : "text-gray-900"
+                              }`
+                            }
+                          >
+                            {state.name}
+                          </Listbox.Option>
+                        ))}
+                      </Listbox.Options>
+                    )}
                   </>
                 )}
               </Listbox>
             </div>
             <button
-              className="flex justify-center text-black bg-white items-center gap-[10px] py-[16px] transition duration-300 ease-in-out transform  hover:shadow-lg hover:bg-black hover:text-white"
-              type="submit"
-            >
-              {loading ? (
-                <FiLoader color="white" />
-              ) : (
-                <p className="flex gap-2 items-center font-bold">
-                  Join the waitlist
-                </p>
-              )}
-            </button>
+          className="flex justify-center text-black bg-white items-center gap-[10px] py-[16px] transition duration-300 ease-in-out transform  hover:shadow-lg hover:bg-black hover:text-white"
+          type="submit"
+        >
+          {loading ? (
+            <FiLoader color="white" />
+          ) : (
+            <p className="flex gap-2 items-center font-bold">
+              Join the waitlist
+            </p>
+          )}
+        </button>
           </form>
         </div>
       </main>
@@ -293,3 +290,4 @@ const WaitList: React.FC = () => {
 };
 
 export default WaitList;
+
