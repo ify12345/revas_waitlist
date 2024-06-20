@@ -38,23 +38,35 @@ const WaitList: React.FC = () => {
   });
 
   useEffect(() => {
-    // Fetch the list of countries
-    fetch("https://revas-backend.onrender.com/api/locations/countries")
-      .then((response) => response.json())
-      .then((data) => setCountries(data))
-      .catch((error) => console.error("Error fetching countries:", error));
+    const fetchCountries = async () => {
+      try {
+        const response = await fetch("https://revas-backend.onrender.com/api/locations/countries");
+        const data = await response.json();
+        setCountries(data);
+      } catch (error) {
+        console.error("Error fetching countries:", error);
+      }
+    };
+
+    fetchCountries();
   }, []);
 
   useEffect(() => {
-    // Fetch the list of states when a country is selected
-    if (selectedCountry) {
-      fetch(
-        `https://revas-backend.onrender.com/api/locations/states?country_id=${selectedCountry.id}`
-      )
-        .then((response) => response.json())
-        .then((data) => setStates(data))
-        .catch((error) => console.error("Error fetching states:", error));
-    }
+    const fetchStates = async () => {
+      if (selectedCountry) {
+        try {
+          const response = await fetch(
+            `https://revas-backend.onrender.com/api/locations/states?country_id=${selectedCountry.id}`
+          );
+          const data = await response.json();
+          setStates(data);
+        } catch (error) {
+          console.error("Error fetching states:", error);
+        }
+      }
+    };
+
+    fetchStates();
   }, [selectedCountry]);
 
   const WaitListSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -68,7 +80,6 @@ const WaitList: React.FC = () => {
           headers: {
             "Content-Type": "application/json",
           },
-
           body: JSON.stringify(formData),
         }
       );
@@ -117,13 +128,13 @@ const WaitList: React.FC = () => {
       </div>
 
       <main className="w-[500px] flex flex-col gap-[10px]">
-        <div className="max-w-[50px] mx-auto pb-8">
+        <Link href="/" className="max-w-[50px] mx-auto pb-8">
           <img
             className="max-w-full object-cover"
             src="/images/logo.svg"
             alt=""
           />
-        </div>
+        </Link>
 
         <p className="text-center mx-auto font-[600] leading-[8px] lg:leading-[12px]">
           REVAS PLASTIC EXCHANGE
