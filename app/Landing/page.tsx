@@ -19,7 +19,7 @@ export default function Landing() {
       <main className="pt-24 lg:pt-28">
         <Hero />
         <Recyclates />
-        <section className="bg-white flex flex-col text-black -mt-20 lg:-mt-96">
+        <section className="bg-white flex flex-col text-black -mt-20 lg:-mt-[200px]">
           <Products />
           <MarketPlace />
           <OurProducts />
