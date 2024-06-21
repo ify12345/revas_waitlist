@@ -85,7 +85,7 @@ const WaitList: React.FC = () => {
 
       if (response.ok) {
         toast.success("Form submitted successfully");
-        router.push(`/success?${formData.workemail}`);
+        router.push(`/success?email=${formData.workemail}`);
       } else {
         console.log(`Error submitting form: ${response.statusText}`);
         setLoading(false);

@@ -4,10 +4,11 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { AiOutlineMail } from "react-icons/ai";
 import { FiLoader } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
+import { Suspense } from "react";
 
 const Success = () => {
-  const searchParams = useSearchParams()
-  
+  const searchParams = useSearchParams();
+  const email = searchParams.get("email");
 
   return (
     <section className="bg-black text-white flex items-center justify-center h-screen w-screen text-[16px] relative px-8 lg:px-0">
@@ -27,7 +28,7 @@ const Success = () => {
         <div className="flex flex-col items-center p-[15px] bg-[#262626] rounded-md gap-5">
           <div className="bg-black w-full flex items-center gap-6 text-[0.8rem] p-3">
             <AiOutlineMail size={16} />
-            <span>{searchParams}</span>
+            <span>{email}</span>
           </div>
           <p className="text-center max-w-[412px] text-[.85rem] text-[#AEAAAE]">
             Thank you for joining our business waiting list. We appreciate your
@@ -46,4 +47,12 @@ const Success = () => {
   );
 };
 
-export default Success;
+const WrappedSuccess = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Success />
+    </Suspense>
+  );
+};
+
+export default WrappedSuccess;
