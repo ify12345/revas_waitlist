@@ -11,33 +11,23 @@ import Recyclates from "@/components/Recyclates";
 import Link from "next/link";
 import React, { useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import { motion, AnimatePresence } from "framer-motion";
 
 export default function Landing() {
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 15 }}
-        transition={{ delay: 0.25 }}
-      >
-        <div>
-          <NavBar />
-          <main className="pt-24 lg:pt-28">
-            <Hero />
-            <Recyclates />
-            <section className="bg-white flex flex-col text-black -mt-20 lg:-mt-[200px]">
-              <Products />
-              <MarketPlace />
-              <OurProducts />
-              <Benefits />
-              <Goal />
-              <Footer />
-            </section>
-          </main>
-        </div>
-      </motion.div>
-    </AnimatePresence>
+    <div>
+      <NavBar />
+      <main className="pt-24 lg:pt-28">
+        <Hero />
+        <Recyclates />
+        <section className="bg-white flex flex-col text-black -mt-20 lg:-mt-[200px]">
+          <Products />
+          <MarketPlace />
+          <OurProducts />
+          <Benefits />
+          <Goal />
+          <Footer />
+        </section>
+      </main>
+    </div>
   );
 }
