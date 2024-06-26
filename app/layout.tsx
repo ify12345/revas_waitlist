@@ -30,6 +30,7 @@ export default function RootLayout({
           speed={200}
           shadow="0 0 10px #13BFFF,0 0 5px #9106F9"
         />
+        
         {children}
       </body>
     </html>
